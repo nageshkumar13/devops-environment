@@ -37,3 +37,11 @@ echo 'export PATH="$PATH:/usr/bin/ansible"' >> ~/.zshrc
 source ~/.zshrc
 echo
 
+# Install Docker
+sudo apt install docker.io -y
+sudo systemctl enable docker --now
+
+# Add Docker to PATH
+echo 'export PATH="$PATH:/usr/bin/docker"' >> ~/.zshrc
+source ~/.zshrc
+echo

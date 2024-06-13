@@ -45,3 +45,35 @@ sudo systemctl enable docker --now
 echo 'export PATH="$PATH:/usr/bin/docker"' >> ~/.zshrc
 source ~/.zshrc
 echo
+
+# Install Kubernetes
+curl -O https://s3.us-west-2.amazonaws.com/amazon-eks/1.30.0/2024-05-12/bin/linux/amd64/kubectl
+chmod +x ./kubectl
+mkdir -p $HOME/bin && cp ./kubectl $HOME/bin/kubectl && export PATH=$HOME/bin:$PATH
+
+
+# Add Kubernetes to PATH
+echo 'export PATH="$PATH:/usr/local/bin/kubectl"' >> ~/.zshrc
+source ~/.zshrc
+echo
+
+# Install Helm
+echo -e "\e[93mInstall Helm and add to PATH...\e[0m"
+curl https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
+
+# Add Helm to PATH
+echo 'export PATH="$PATH:/usr/local/bin/helm"' >> ~/.zshrc
+source ~/.zshrc
+echo
+
+# Install AWS CLI
+sudo apt install curl unzip -y
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+unzip awscliv2.zip
+sudo ./aws/install  
+aws --version
+
+# Add AWS CLI to PATH
+echo 'export PATH="$PATH:/usr/local/bin/aws"' >> ~/.zshrc
+source ~/.zshrc
+echo
